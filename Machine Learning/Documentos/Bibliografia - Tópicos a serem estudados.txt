@@ -1,0 +1,13 @@
+Livro Witten:
+- CAPÍTULO 4 - Algoritmos: Os Métodos Básicos; Seção 4.6 - Modelos Lineares;
+- CAPÍTULO 5 - Credibilidade: Avaliando o que foi Aprendido; Seção 5.8- Avaliando Predição Numérica;
+- CAPÍTULO 6 - Implementações: Esquemas Reais de Aprendizado de Máquina; Seção 6.4 - Estendendo Modelos Lineares;
+- (Leitura complementar) CAPÍTULO 3 - Saída: Representação do Conhecimento; Seção 3.2 - Modelos Lineares;
+- (Leitura complementar) CAPÍTULO 4 - Algoritmos: Os Métodos Básicos; Seção 4.3 -  Dividir e Conquistar: Construindo Árvores de Decisão;
+
+Apostila ML - Análise de etapas;
+
+Prática e Regrssão Linear:
+- https://www.youtube.com/playlist?list=PL-t7zzWJWPtzhZtI-bWWHFtCfxtjmBdIW
+- https://developers.google.com/machine-learning/crash-course/linear-regression?hl=pt-br
+
