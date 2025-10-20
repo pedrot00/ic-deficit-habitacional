@@ -30,6 +30,9 @@ X_teste = scaler.transform(X_teste)
 
 
 # criando e treinando modelo, repare que ate agora so muda essa linha em relacao a regressao
+# note que o random_state =42 fixa uma ordem aleatoria -> tonra-se deterministica
+# eh util fixar para comparar o resultado c outros modelos pois se rodar x vezes vai dar sempre o mesmo resultado
+# no entanto eh interessante explorar de forma nao deterministica tmb
 modelo = RandomForestRegressor(n_estimators=100, random_state=42)
 modelo.fit(X_treino, Y_treino)  # aprende padroes <-> ajusta as arvores
 #n_estimators -> quant. arvores, +arvore -> +estabilidade, +lento
