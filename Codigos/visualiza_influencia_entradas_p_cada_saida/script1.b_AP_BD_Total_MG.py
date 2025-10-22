@@ -1,6 +1,8 @@
-# ======================================
-# 1. Importação das bibliotecas
-# ======================================
+# o codigo a seguir eh uma floresta aleatoria que cria 200 arvores em cada uma eh medido as entradas que 
+# possuem maior influencia para as 5 saidas da base de dados BD_MG_DEFICIT, mostrando as 15 mais influentes
+# para cada saida individualmente, no final eh feito uma ponderacao das 200 arvores p saber os componentes mais
+# impactantes. a ordem que as avores pegam 
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor

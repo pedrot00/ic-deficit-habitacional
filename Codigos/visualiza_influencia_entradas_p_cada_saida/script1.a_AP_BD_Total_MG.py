@@ -1,4 +1,6 @@
-#script1 etapa 1 - visualiza influencia de todas as entradas p cada saida individualmente
+# script1 etapa 1 - visualiza influência de todas as entradas para cada saída individualmente
+# utilizando mapa de calor e correlação linear (veja que eh linear - n tao preciso)
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -6,34 +8,37 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+import seaborn as sns  # <--- adicionado
 
+# carregar dados
 dados = pd.read_csv("../BDD/BD_MG_DEFICIT.csv")
 
 # calcular a matriz de correlação
 corr = dados.corr()
 
-# exibir somente corr das saidas com as entradas
-saidas = ["DOMICILIOS_PRECARIOS","COABITACAO","ONUS_EXCESSIVO","ADENSAMENTO","DEFICIT_TOTAL"]
+# exibir somente correlações das saídas com as entradas
+saidas = ["DOMICILIOS_PRECARIOS", "COABITACAO", "ONUS_EXCESSIVO", "ADENSAMENTO", "DEFICIT_TOTAL"]
 corr_saidas = corr[saidas].drop(saidas)  # remove correlação entre as saídas
 
+# VISUALIZAÇÃO COM SEABORN
+# calcula tamanho automático com base na quantidade de entradas
+altura = max(8, len(corr_saidas) * 0.4)
+largura = max(10, len(saidas) * 1.2)
 
-# VISUALIZACAO
-plt.figure(figsize=(20, 20))
-plt.imshow(corr_saidas, cmap='coolwarm', aspect=0,1, vmin=-1, vmax=1)
-plt.colorbar(label='Correlação', shrink=0.3)
-
-plt.xticks(range(len(saidas)), saidas, rotation=45, ha='right', fontsize=12, fontweight='bold')
-plt.yticks(range(len(corr_saidas.index)), corr_saidas.index, fontsize=10)
-
+plt.figure(figsize=(largura, altura))
+sns.heatmap(
+    corr_saidas,
+    annot=True,
+    fmt=".2f",
+    cmap="coolwarm",
+    center=0,
+    vmin=-1, vmax=1,
+    linewidths=0.5,
+    cbar_kws={"label": "Correlação"}
+)
 plt.title("Correlação entre Entradas e Saídas", fontsize=16, fontweight='bold', pad=20)
-
-# adicionar os valores de correlação no mapa com fonte menor
-for i in range(len(corr_saidas.index)):
-    for j in range(len(saidas)):
-        valor = corr_saidas.iloc[i, j]
-        # mudar cor do texto baseado no valor da correlação
-        cor_texto = 'white' if abs(valor) > 0.5 else 'black'
-        plt.text(j, i, f'{valor:.2f}', 
-                ha='center', va='center', color=cor_texto, fontsize=8)
+plt.xticks(rotation=45, ha='right', fontsize=12, fontweight='bold')
+plt.yticks(fontsize=10)
 plt.tight_layout()
 plt.show()
+
