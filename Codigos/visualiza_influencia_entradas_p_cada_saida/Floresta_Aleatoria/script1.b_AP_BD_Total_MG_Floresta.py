@@ -12,7 +12,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import seaborn as sns
 
 
-dados = pd.read_csv("../BDD/BD_MG_DEFICIT.csv")
+dados = pd.read_csv("../../BDD/BD_MG_DEFICIT.csv")
 
 # remove qualquer linha que tenha NaN nas colunas de saída ou entrada
 dados = dados.dropna(subset=["DOMICILIOS_PRECARIOS", "COABITACAO", "ONUS_EXCESSIVO", "ADENSAMENTO", "DEFICIT_TOTAL"])
